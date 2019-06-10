@@ -36,8 +36,19 @@ window.addEventListener('resize', () => randomColor(colors));
 
 //create a container for the draggable item
 
-const newElementStyle = function(element, width, height, color = 'black', display = 'flex', alignItems = 'center', justifyContent = 'center', bgColor = 'white', border = '1px solid black', 
-                                    borderRadius = '50%', textContent = '', touchAction = 'none', userSelect = 'none') {
+const newElementStyle = function(element, 
+    width, 
+    height,
+    color = 'black', 
+    display = 'flex', 
+    alignItems = 'center', 
+    justifyContent = 'center', 
+    bgColor = 'white', border = '1px solid black', 
+    borderRadius = '50%', 
+    textContent = '', 
+    touchAction = 'none', 
+    userSelect = 'none') {
+
     element.style.width = width;
     element.style.height = height;
     element.style.color = color;
@@ -70,7 +81,7 @@ dragBox.appendChild(dragButton)
 newElementStyle(dragButton, '200px', '50px', 'dodgerblue', 'flex', 'center', 'center', 'sand', '2px solid dodgerblue', '50%', 'Double Click ME!', 'none', 'none')
 
 dragButton.addEventListener('dblclick', event => {
-    event.target.textContent = "Drag ME!"
+    event.target.textContent = "Drag Me!"
 })
 
 // magic
@@ -109,6 +120,8 @@ function dragEnd(event) {
     intialX = currentX;
     initialY = currentY;
 
+    dragButton.textContent = 'Double Click Me!';
+
     active = false;
 }
 
@@ -134,3 +147,19 @@ function drag(event) {
 function setTranslate(xPos, yPos, el) {
     el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
 }
+
+// strecth
+
+TweenMax.to('button, .btn', 2, {rotation: 360, delay:1})
+
+images.forEach((item, i) => {
+    if(i%2 ===0) {
+        item.className += ' leftSlide';
+    } else {
+        item.className += 'rightSlide';
+    }
+})
+
+TweenMax.from('.rightSlide', 1, {x:600})
+TweenMax.from('.leftSlide', 1, {x:-600})
+
