@@ -60,6 +60,7 @@ mainContentHeader.appendChild(dragBox)
 newElementStyle(dragBox, '100%', '500px', 'black', 'flex', 'center', 'center', '#eee', 'none', '20px')
 
 // draggable item
+
 const newButton = () => document.createElement('button')
 
 const dragButton = newButton()
@@ -73,6 +74,7 @@ dragButton.addEventListener('dblclick', event => {
 })
 
 // magic
+
 let active = false;
 let currentX;
 let currentY;
